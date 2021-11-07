@@ -1,2 +1,2 @@
 # research
-my reearch codes and any intersting data
+my research codes and any intersting data
