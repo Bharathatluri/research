@@ -7,13 +7,17 @@
 ## Date: 07/11/2021
 ##
 ##
+## coin.txt content can be:
+## btc
+## ada
+##
 ############################################################################
 
 import os
 import time
 import requests
 import pandas as pd
-HOME=os.path.expanduser("~")
+from pathlib import Path
 
 def get_crypto_price(symbol, start, end):
     try:
@@ -35,7 +39,7 @@ def deleteContent(fName):
 
 histData = []
 
-with open('/Users/bharath/coin.txt') as f:
+with open(str(Path.home())+'/coin.txt') as f:
     coinList = [line.rstrip() for line in f]
 for coin in coinList:
 	histData.append(coin)
@@ -44,5 +48,5 @@ for coin in coinList:
 #print(histData)
 toExcelData = pd.DataFrame(histData)
 
-deleteContent('/Users/bharath/myHistdata.xlsx')
-toExcelData.to_excel (r'/Users/bharath/myHistdata.xlsx', index = False, header=True)
+deleteContent(str(Path.home())+'/myHistdata.xlsx')
+toExcelData.to_excel(str(Path.home())+'/myHistdata.xlsx', index = False, header=True)
